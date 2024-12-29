@@ -1,5 +1,6 @@
 import nltk
 import re
+import os
 import string
 import tkinter as tk
 from tkinter.scrolledtext import ScrolledText
@@ -12,7 +13,9 @@ from reportlab.pdfgen import canvas
 from docx import Document
 from tkinter import PhotoImage
 from PIL import Image, ImageTk
-
+# nltk.download('punkt_tab')
+os.environ['TCL_LIBRARY'] = "C:/Program Files/Python313/tcl/tcl8.6"
+os.environ['TK_LIBRARY'] = "C:/Program Files/Python313/tcl/tk8.6"
 # start of algorithm
 def preprocess(text):
     text = re.sub(r'\s+', ' ', text)
@@ -68,7 +71,7 @@ window = tk.Tk()
 window.title("Summarizer")
 window.geometry('1000x700')
 window.minsize(width=700, height=600)
-custom_logo = tk.PhotoImage(file="AILOGO.png")
+custom_logo = tk.PhotoImage(file="icon.png")
 window.iconphoto(True, custom_logo)
 
 # Create a style for ttk widgets (tabs)
@@ -503,15 +506,16 @@ URLtab_display_Result_Text.config(borderwidth=2, relief="groove")
 #end of url tab
 #atart of about us tab
 # Create About Us tab
-logo_kateb = PhotoImage(file="logoKateb.png").subsample(1)
+logo_tuf = PhotoImage(file="tuf.png").subsample(1)
 def fill_about_us_tab():
     about_us_text = """
     \t\tWelcome to the about us section!\n\n
-    This application is my final year project at Kateb University, Kabul, Afghanistan.
+    This application is my Natural Language Processing project, designed to summarize text from various sources.
     Project Name: Text Summarization
-    Developed by: Saifullah Mansoori
-    Under the supervision of: Professor Mohammad Nazim Jafari
-    Email: m.n.jafary@gmail.com
+    Developed by: 
+    Muhammad Anas 2022-bs-se-103
+    Sultan Anwar  2022-bs-se-063
+    Khurran Ehsan  2022-bs-se-087  
 
     About the Project:
     The Text Summarization Tool is designed to summarize text from various sources, including user-provided text, files
@@ -519,15 +523,13 @@ def fill_about_us_tab():
     for extracting key information from large volumes of text.
 
     Contact Information:
-    Email: saifullahmansoori88@gmail.com
-    LinkedIn: linkedin.com/in/saifullah-mansoori-489479271
-    GitHub: github.com/SaifullahMansoori
+    Email: 
     """
     # Create a label for the text
     about_us_label = tk.Label(AboutUS_Tab, text=about_us_text, padx=10, pady=10, justify="left", font=("Helvetica", 10))
     about_us_label.grid(row=2, column=0, padx=10, pady=10)
     # Create a label for the logo
-    logokateb = tk.Label(AboutUS_Tab, image=logo_kateb)
+    logokateb = tk.Label(AboutUS_Tab, image=logo_tuf)
     logokateb.grid(row=3, column=0, padx=5, pady=0, sticky="w")
 # Call the function to fill the About Us tab
 fill_about_us_tab()
