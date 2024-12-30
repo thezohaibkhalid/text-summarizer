@@ -71,8 +71,8 @@ window = tk.Tk()
 window.title("Summarizer")
 window.geometry('1000x700')
 window.minsize(width=700, height=600)
-custom_logo = tk.PhotoImage(file="icon.png")
-window.iconphoto(True, custom_logo)
+# custom_logo = tk.PhotoImage(file="icon.png")
+# window.iconphoto(True, custom_logo)
 
 # Create a style for ttk widgets (tabs)
 # Add a padding style to the notebook tabs
@@ -506,7 +506,7 @@ URLtab_display_Result_Text.config(borderwidth=2, relief="groove")
 #end of url tab
 #atart of about us tab
 # Create About Us tab
-logo_tuf = PhotoImage(file="tuf.png").subsample(1)
+# logo_tuf = PhotoImage(file="tuf.png").subsample(1)
 def fill_about_us_tab():
     about_us_text = """
     \t\tWelcome to the about us section!\n\n
@@ -526,11 +526,11 @@ def fill_about_us_tab():
     Email: 
     """
     # Create a label for the text
-    about_us_label = tk.Label(AboutUS_Tab, text=about_us_text, padx=10, pady=10, justify="left", font=("Helvetica", 10))
-    about_us_label.grid(row=2, column=0, padx=10, pady=10)
-    # Create a label for the logo
-    logokateb = tk.Label(AboutUS_Tab, image=logo_tuf)
-    logokateb.grid(row=3, column=0, padx=5, pady=0, sticky="w")
+    # about_us_label = tk.Label(AboutUS_Tab, text=about_us_text, padx=10, pady=10, justify="left", font=("Helvetica", 10))
+    # about_us_label.grid(row=2, column=0, padx=10, pady=10)
+    # # Create a label for the logo
+    # logokateb = tk.Label(AboutUS_Tab, image=logo_tuf)
+    # logokateb.grid(row=3, column=0, padx=5, pady=0, sticky="w")
 # Call the function to fill the About Us tab
 fill_about_us_tab()
 # end tab about us
