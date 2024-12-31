@@ -16,6 +16,8 @@ from PIL import Image, ImageTk
 # nltk.download('punkt_tab')
 os.environ['TCL_LIBRARY'] = "C:/Program Files/Python313/tcl/tcl8.6"
 os.environ['TK_LIBRARY'] = "C:/Program Files/Python313/tcl/tk8.6"
+
+
 # start of algorithm
 def preprocess(text):
     text = re.sub(r'\s+', ' ', text)
@@ -25,6 +27,7 @@ def preprocess(text):
     tokens = [word for word in tokens if word not in stopwords and word not in string.punctuation]
     formatted_text = ' '.join(tokens)
     return formatted_text
+
 def calculate_sentence_scores(sentences, important_words, distance):
     scores = []
     for sentence in sentences:
@@ -65,14 +68,15 @@ def summarizer(text, percentage):
     ranked_indices = sorted(range(len(scores)), key=lambda k: original_sentences[k])
     best_sentences = [original_sentences[i] for i in ranked_indices[:num_sentences]]
     return best_sentences
+
 # end of algorithm
 # create GUI window
 window = tk.Tk()
 window.title("Summarizer")
 window.geometry('1000x700')
 window.minsize(width=700, height=600)
-# custom_logo = tk.PhotoImage(file="icon.png")
-# window.iconphoto(True, custom_logo)
+custom_logo = tk.PhotoImage(file="icon.png")
+window.iconphoto(True, custom_logo)
 
 # Create a style for ttk widgets (tabs)
 # Add a padding style to the notebook tabs
@@ -383,11 +387,11 @@ def URL_Get_text():
             page = urlopen(raw_text)
             soup = BeautifulSoup(page, 'lxml')
             fetched_text = ''.join(map(lambda p: p.text, soup.find_all('p')))
-            URLTab_Entry_Text.delete('1.0', tk.END)  # Clear previous content
-            URLTab_Entry_Text.insert(tk.END, fetched_text)  # Display fetched text in URLTab_Entry_Text
+            URLTab_Entry_Text.delete('1.0', tk.END)  
+            URLTab_Entry_Text.insert(tk.END, fetched_text)  
         except Exception as e:
             messagebox.showerror("Error",
-                                "An error occurred while fetching text from url!")  # Show the error message in a new window
+                                "An error occurred while fetching text from url!")
     else:
         messagebox.showerror("Error", "Please enter a valid URL!")
         # Show an error message in a new window
@@ -506,7 +510,7 @@ URLtab_display_Result_Text.config(borderwidth=2, relief="groove")
 #end of url tab
 #atart of about us tab
 # Create About Us tab
-# logo_tuf = PhotoImage(file="tuf.png").subsample(1)
+logo_tuf = PhotoImage(file="tuf.png").subsample(1)
 def fill_about_us_tab():
     about_us_text = """
     \t\tWelcome to the about us section!\n\n
@@ -515,22 +519,22 @@ def fill_about_us_tab():
     Developed by: 
     Muhammad Anas 2022-bs-se-103
     Sultan Anwar  2022-bs-se-063
-    Khurran Ehsan  2022-bs-se-087  
+    Khurran Ehsan  2022-bs-se-087 
+    Zain younas    2022-BS-SE-128 
 
     About the Project:
     The Text Summarization Tool is designed to summarize text from various sources, including user-provided text, files
     and web URLs. It uses natural language processing techniques to generate concise summaries, making it a valuable tool
     for extracting key information from large volumes of text.
 
-    Contact Information:
-    Email: 
+
     """
     # Create a label for the text
-    # about_us_label = tk.Label(AboutUS_Tab, text=about_us_text, padx=10, pady=10, justify="left", font=("Helvetica", 10))
-    # about_us_label.grid(row=2, column=0, padx=10, pady=10)
-    # # Create a label for the logo
-    # logokateb = tk.Label(AboutUS_Tab, image=logo_tuf)
-    # logokateb.grid(row=3, column=0, padx=5, pady=0, sticky="w")
+    about_us_label = tk.Label(AboutUS_Tab, text=about_us_text, padx=10, pady=10, justify="left", font=("Helvetica", 10))
+    about_us_label.grid(row=2, column=0, padx=10, pady=10)
+    # Create a label for the logo
+    logokateb = tk.Label(AboutUS_Tab, image=logo_tuf)
+    logokateb.grid(row=3, column=0, padx=5, pady=0, sticky="w")
 # Call the function to fill the About Us tab
 fill_about_us_tab()
 # end tab about us
